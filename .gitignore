@@ -1,0 +1,52 @@
+# ---------------- OS / editor ----------------
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.sw?
+
+# ---------------- Logs ----------------
+logs/
+*.log
+
+# ---------------- Python (backend) ----------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local SQLite database (regenerate with `python -m app.seed`)
+*.db
+*.sqlite3
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# ---------------- Node / Vite (frontend) ----------------
+node_modules/
+dist/
+dist-ssr/
+dev-dist/
+*.local
+
+# ---------------- Capacitor / Android ----------------
+frontend/android/app/build/
+frontend/android/build/
+frontend/android/.gradle/
+frontend/android/local.properties
+frontend/android/app/release/
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# ---------------- Build artifacts ----------------
+/dist/
