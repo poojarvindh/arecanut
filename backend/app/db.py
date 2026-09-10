@@ -11,6 +11,11 @@ DB_PATH = os.path.join(BASE_DIR, "arecanut.db")
 # with zero external services. Same models/migrations work on both.
 DATABASE_URL = os.environ.get("DATABASE_URL", f"sqlite:///{DB_PATH}")
 
+# Render (and some other hosts) hand out URLs with the legacy "postgres://"
+# scheme, which SQLAlchemy 2.0 no longer recognises. Normalise it.
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 engine = create_engine(DATABASE_URL, connect_args=connect_args, pool_pre_ping=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
