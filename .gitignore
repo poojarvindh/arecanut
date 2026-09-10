@@ -29,6 +29,8 @@ env/
 .env
 .env.*
 !.env.example
+# ...but the frontend's production API URL is public config, not a secret — keep it
+!frontend/.env.production
 
 # ---------------- Node / Vite (frontend) ----------------
 node_modules/

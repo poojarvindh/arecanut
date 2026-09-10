@@ -32,7 +32,9 @@ export default defineConfig({
         navigateFallbackDenylist: [/^\/api\//],
         runtimeCaching: [
           {
-            urlPattern: /^\/api\/masters\//,
+            // Match whether /api is same-origin (dev proxy) or an absolute
+            // cross-origin URL (VITE_API_BASE in production builds).
+            urlPattern: ({ url }) => url.pathname.startsWith('/api/masters/'),
             handler: 'CacheFirst',
             options: { cacheName: 'masters-cache', expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 7 } },
           },
